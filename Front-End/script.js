@@ -9,7 +9,7 @@ $(".getReq").click( () => {
                 console.log(todo)
                 // Create outer div
                 const card = document.createElement('div');
-                card.classList.add('card');
+                card.classList.add('card' , 'p-5');
 
                 // Create h3 element
                 const title = document.createElement('h3');

@@ -8,8 +8,20 @@
 <body>
 
 <h1 class="container text-center mt-5">TODO APP</h1>
-<button class="getReq btn btn-primary rounded-0">Load Todos</button>
-<div class="container mt-5 card todo-holder d-flex">
+<div class="container d-flex justify-content-center mt-5">
+    <div class="mb-3">
+        <label for="exampleFormControlInput1" class="form-label">Name</label>
+        <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+    </div>
+    <div class="mb-3">
+        <label for="exampleFormControlTextarea1" class="form-label">Description</label>
+        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+    </div>
+</div>
+<div class="container d-flex justify-content-center mt-5">
+    <button class="getReq btn btn-primary rounded-0">Load Todos</button>
+</div>
+<div class="container mt-5 card todo-holder d-flex flex-wrap gap-3 flex-row p-5 justify-content-center">
 </div>
 
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
