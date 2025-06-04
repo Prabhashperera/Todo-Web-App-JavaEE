@@ -1,5 +1,4 @@
 
-
 $(".getReq").click( () => {
     $.ajax({
         url : "http://localhost:8080/app/todo",
@@ -36,4 +35,21 @@ $(".getReq").click( () => {
             })
         }
     })
-})
+});
+
+// Save TODO
+$("saveTodo").click(() => {
+    let todoName =
+
+
+
+    $.ajax({
+        url: "http://localhost:8080/app/todo",
+        method: "POST",
+        contentType: 'application/json',
+        data: JSON.stringify(),
+        success: function () {
+            console.log("OK");
+        }
+    })
+});
