@@ -43,13 +43,17 @@ $("saveTodo").click(() => {
     let todoTime = $("todo_Time").val();
     let todoDesc = $("todo_Desc").val();
 
-
+    let todoData = {
+        name: todoName,
+        time: todoTime,
+        desc: todoDesc
+    }
 
     $.ajax({
         url: "http://localhost:8080/app/todo",
         method: "POST",
         contentType: 'application/json',
-        data: JSON.stringify(),
+        data: JSON.stringify(todoData),
         success: function () {
             console.log("OK");
         }
