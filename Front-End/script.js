@@ -4,6 +4,7 @@ $(".getReq").click( () => {
         url : "http://localhost:8080/app/todo",
         method : "GET",
         success : function (resp) {
+            $(".todo-holder").empty();
             resp.map((todo) => {
                 console.log(todo)
                 // Create outer div
@@ -38,15 +39,16 @@ $(".getReq").click( () => {
 });
 
 // Save TODO
-$("saveTodo").click(() => {
-    let todoName = $("todo_Name").val();
-    let todoTime = $("todo_Time").val();
-    let todoDesc = $("todo_Desc").val();
+$(".saveTodo").click(() => {
+    console.log("cliked")
+    let todoName = $(".todo_Name").val();
+    let todoTime = $(".todo_Time").val();
+    let todoDesc = $(".todo_Desc").val();
 
     let todoData = {
         name: todoName,
         time: todoTime,
-        desc: todoDesc
+        description: todoDesc
     }
 
     $.ajax({
@@ -56,6 +58,7 @@ $("saveTodo").click(() => {
         data: JSON.stringify(todoData),
         success: function () {
             console.log("OK");
+            $(".getReq").click();
         }
     })
 });

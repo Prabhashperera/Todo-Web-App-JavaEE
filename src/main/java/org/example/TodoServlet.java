@@ -7,6 +7,7 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
+import java.io.BufferedReader;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -45,6 +46,29 @@ public class TodoServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/todoApp", "root", "1234");
 
+            BufferedReader reader = req.getReader();
+            ObjectMapper mapper = new ObjectMapper();
+            Map<String, String> todoData = mapper.readValue(reader, Map.class);
+
+            String name = todoData.get("name");
+            String time = todoData.get("time");
+            String description = todoData.get("description");
+
+            PreparedStatement stm = connection.prepareStatement("INSERT INTO todo(name, description, time) values (?,?,?)");
+            stm.setString(1, name);
+            stm.setString(2, description);
+            stm.setString(3, time);
+            stm.executeUpdate();
+
+            resp.setContentType("application/json");
+            resp.getWriter().write("{\"success\": true}");
+
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
     }
 }
