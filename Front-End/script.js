@@ -39,7 +39,9 @@ $(".getReq").click( () => {
 
 // Save TODO
 $("saveTodo").click(() => {
-    let todoName =
+    let todoName = $("todo_Name").val();
+    let todoTime = $("todo_Time").val();
+    let todoDesc = $("todo_Desc").val();
 
 
 
