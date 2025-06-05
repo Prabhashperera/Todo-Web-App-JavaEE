@@ -38,6 +38,11 @@ $(".getReq").click( () => {
     })
 });
 
+$(document).on("click", ".card-btn", function () {
+    const todoId = $(this).data("name"); // 💥 Grab the ID here!
+    console.log("Clicked Todo ID:", todoId);
+});
+
 // Save TODO
 $(".saveTodo").click(() => {
     console.log("clicked")
