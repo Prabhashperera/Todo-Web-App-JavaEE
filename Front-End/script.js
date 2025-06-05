@@ -40,7 +40,7 @@ $(".getReq").click( () => {
 
 // Save TODO
 $(".saveTodo").click(() => {
-    console.log("cliked")
+    console.log("clicked")
     let todoName = $(".todo_Name").val();
     let todoTime = $(".todo_Time").val();
     let todoDesc = $(".todo_Desc").val();
@@ -61,4 +61,10 @@ $(".saveTodo").click(() => {
             $(".getReq").click();
         }
     })
+});
+
+//Remove TODO
+
+$(".removeTodo").click(() => {
+
 });
