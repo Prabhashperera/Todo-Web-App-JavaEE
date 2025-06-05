@@ -28,11 +28,14 @@ $(".getReq").click( () => {
                 description.textContent = todo.description;
                 time.textContent = todo.time;
 
-                card.setAttribute('data-name', todo.name);
 
                 card.appendChild(title);
                 card.appendChild(description);
                 card.appendChild(time);
+
+                $(card).data("name", todo.name);
+                $(card).data("time", todo.time);
+                $(card).data("description", todo.description);
 
                 $(".todo-holder").append(card);
             })
@@ -40,9 +43,15 @@ $(".getReq").click( () => {
     })
 });
 
-$(document).on("click", ".card", function () {
-    const todoId = $(this).data("name"); // 💥 Grab the ID here!
-    console.log("Clicked Todo ID:", todoId);
+$(document).on("click", ".todo-holder .card", function () {
+    const selectedTodoName = $(this).data("name");
+    const selectedTodoTime = $(this).data("time");
+    const selectedTodoDesc = $(this).data("description");
+
+    $(".todo_Name").val(selectedTodoName);
+    $(".todo_Time").val(selectedTodoTime);
+    $(".todo_Desc").val(selectedTodoDesc);
+
 });
 
 // Save TODO
