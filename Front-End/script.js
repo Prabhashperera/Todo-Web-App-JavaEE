@@ -83,7 +83,15 @@ $(".saveTodo").click(() => {
 
 $(".removeTodo").click(() => {
     let todoName = $("todo_Name").val();
+    const data = {
+        todoName: todoName
+    }
     if (todoName !== "") {
-
+        $.ajax({
+            url: "http://localhost:8080/app/todo",
+            method: "POST",
+            contentType: 'application/json',
+            data: JSON.stringify(data)
+        });
     }
 });
