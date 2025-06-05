@@ -28,6 +28,8 @@ $(".getReq").click( () => {
                 description.textContent = todo.description;
                 time.textContent = todo.time;
 
+                card.setAttribute('data-name', todo.name);
+
                 card.appendChild(title);
                 card.appendChild(description);
                 card.appendChild(time);
@@ -38,7 +40,7 @@ $(".getReq").click( () => {
     })
 });
 
-$(document).on("click", ".card-btn", function () {
+$(document).on("click", ".card", function () {
     const todoId = $(this).data("name"); // 💥 Grab the ID here!
     console.log("Clicked Todo ID:", todoId);
 });
