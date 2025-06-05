@@ -82,14 +82,15 @@ $(".saveTodo").click(() => {
 //Remove TODO
 
 $(".removeTodo").click(() => {
-    let todoName = $("todo_Name").val();
+    let todoName = $(".todo_Name").val();
+    console.log(todoName)
     const data = {
         todoName: todoName
     }
     if (todoName !== "") {
         $.ajax({
             url: "http://localhost:8080/app/todo",
-            method: "POST",
+            method: "DELETE",
             contentType: 'application/json',
             data: JSON.stringify(data)
         });

@@ -64,8 +64,30 @@ public class TodoServlet extends HttpServlet {
             stm.setString(3, time);
             stm.executeUpdate();
 
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    @Override
+    protected void doDelete(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/todoApp", "root", "1234");
+
+            BufferedReader data = req.getReader();
+            ObjectMapper mapper = new ObjectMapper();
+            Map<String, String> map = mapper.readValue(data, Map.class);
+
+            String todoName = map.get("todoName");
+            System.out.println("Server SIDE - " + todoName);
+
+            PreparedStatement stm = connection.prepareStatement("DELETE FROM todo WHERE name = ?");
+            stm.setString(1, todoName);
+            boolean isDeleted = 0 < stm.executeUpdate();
+
             resp.setContentType("application/json");
-            resp.getWriter().write("{\"success\": true}");
+            resp.getWriter().write("{\"success\": " + isDeleted + "}");
 
         } catch (Exception e) {
             throw new RuntimeException(e);
