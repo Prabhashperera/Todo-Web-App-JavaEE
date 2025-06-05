@@ -82,5 +82,8 @@ $(".saveTodo").click(() => {
 //Remove TODO
 
 $(".removeTodo").click(() => {
+    let todoName = $("todo_Name").val();
+    if (todoName !== "") {
 
+    }
 });
